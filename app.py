@@ -29,9 +29,9 @@ def predict_diabetes(input_data):
     st.write(f"Prediction Value (After Conversion): {prediction_value}")
 
     if prediction_value == 0:
-        return 'The person is not diabetic.'
+        return 0
     elif prediction_value == 1:
-        return 'The person is diabetic.'
+        return 1
     else:
         return 'Invalid prediction.'
 
@@ -53,7 +53,12 @@ def main():
             input_data = [float(Pregnancies), float(Glucose), float(BMI), float(Age)]
             # Call the prediction function
             diagnosis = predict_diabetes(input_data)
-            st.success(diagnosis)  # Display the result
+            if diagnosis == 0:
+                st.success("The person is not diabetic.")
+            elif diagnosis == 1:
+                st.error("The person is diabetic.")
+            else:
+                st.error("Invalid prediction.")
         except ValueError:
             st.error("Please enter valid numeric values for all inputs.")
 
