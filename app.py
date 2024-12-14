@@ -4,8 +4,9 @@ import joblib
 import streamlit as st
 
 # Load the trained model
-with open('trained_model.sav', 'rb') as model_file:
+with open('trained_model.sav', 'rb') as  model_file:
     loaded_model = pickle.load(model_file)
+
 
 # Load the scaler
 scaler = joblib.load('scaler.pkl')  # Assuming you saved the scaler as 'scaler.pkl'
